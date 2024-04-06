@@ -13,7 +13,7 @@ const displayPhones = (phones) => {
   phones.forEach((phone) => {
     console.log(phone);
     const phoneCart = document.createElement("div");
-    phoneCart.classList = `card card-compact w-96 bg-base-100 shadow-xl`;
+    phoneCart.classList = `card card-compact mx-10 bg-base-100 shadow-xl `;
     phoneCart.innerHTML = `
         <figure><img src="${phone.image}" alt="Shoes" />
         </figure>
