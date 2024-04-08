@@ -1,7 +1,7 @@
 // console.log("Script File Added")
-const loadPhone = async () => {
+const loadPhone = async (searchText) => {
   const res = await fetch(
-    "https://openapi.programming-hero.com/api/phones?search=iphone"
+    `https://openapi.programming-hero.com/api/phones?search=${searchText}`
   );
   const data = await res.json();
   const phones = data.data;
@@ -10,10 +10,11 @@ const loadPhone = async () => {
 
 const displayPhones = (phones) => {
   const phoneContainer = document.getElementById("phone-container");
+  phoneContainer.textContent="";
   phones.forEach((phone) => {
     console.log(phone);
     const phoneCart = document.createElement("div");
-    phoneCart.classList = `card card-compact mx-10 bg-base-100 shadow-xl `;
+    phoneCart.classList = `card card-compact px-4 bg-base-100 shadow-xl `;
     phoneCart.innerHTML = `
         <figure><img src="${phone.image}" alt="Shoes" />
         </figure>
@@ -29,4 +30,10 @@ const displayPhones = (phones) => {
   });
 };
 
-loadPhone();
+const handleClick = () => {
+  const inputField = document.getElementById("search-field");
+  const inputFieldValue = inputField.value;
+  inputField.value = "";
+  loadPhone(inputFieldValue);
+}
+
