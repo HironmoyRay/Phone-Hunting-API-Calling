@@ -11,8 +11,22 @@ const loadPhone = async (searchText) => {
 const displayPhones = (phones) => {
   const phoneContainer = document.getElementById("phone-container");
   phoneContainer.textContent="";
+
+  const phonesLength = phones.length;
+  console.log(phonesLength);
+  const showAllContainer = document.getElementById("showAll-container");
+  if(phonesLength>12){
+    showAllContainer.classList.remove("hidden");
+  }
+  else{
+    showAllContainer.classList.add("hidden")
+  }
+  
+  phones = phones.slice(0,12);
+
+
   phones.forEach((phone) => {
-    console.log(phone);
+    // console.log(phone);
     const phoneCart = document.createElement("div");
     phoneCart.classList = `card card-compact px-4 bg-base-100 shadow-xl `;
     phoneCart.innerHTML = `
