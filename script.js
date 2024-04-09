@@ -1,4 +1,3 @@
-// console.log("Script File Added")
 const loadPhone = async (searchText) => {
   const res = await fetch(
     `https://openapi.programming-hero.com/api/phones?search=${searchText}`
@@ -10,23 +9,20 @@ const loadPhone = async (searchText) => {
 
 const displayPhones = (phones) => {
   const phoneContainer = document.getElementById("phone-container");
-  phoneContainer.textContent="";
+  phoneContainer.textContent = "";
 
   const phonesLength = phones.length;
   console.log(phonesLength);
   const showAllContainer = document.getElementById("showAll-container");
-  if(phonesLength>12){
+  if (phonesLength > 12) {
     showAllContainer.classList.remove("hidden");
+  } else {
+    showAllContainer.classList.add("hidden");
   }
-  else{
-    showAllContainer.classList.add("hidden")
-  }
-  
-  phones = phones.slice(0,12);
 
+  phones = phones.slice(0, 12);
 
   phones.forEach((phone) => {
-    // console.log(phone);
     const phoneCart = document.createElement("div");
     phoneCart.classList = `card card-compact px-4 bg-base-100 shadow-xl `;
     phoneCart.innerHTML = `
@@ -40,7 +36,8 @@ const displayPhones = (phones) => {
             </div>
         </div>
         `;
-        phoneContainer.appendChild(phoneCart);
+    phoneContainer.appendChild(phoneCart);
+    loader(false);
   });
 };
 
@@ -49,5 +46,16 @@ const handleClick = () => {
   const inputFieldValue = inputField.value;
   inputField.value = "";
   loadPhone(inputFieldValue);
-}
+  loader(true);
+};
 
+const loader = (isLoading) => {
+  const loaderDiv = document.getElementById("loader-div");
+  if(isLoading === true){
+    loaderDiv.classList.remove("hidden");
+  }
+  else{
+    loaderDiv.classList.add("hidden");
+  }
+
+}
