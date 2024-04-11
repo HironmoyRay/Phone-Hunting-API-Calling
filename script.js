@@ -22,6 +22,7 @@ const displayPhones = (phones) => {
 
   phones = phones.slice(0, 12);
 
+
   phones.forEach((phone) => {
     const phoneCart = document.createElement("div");
     phoneCart.classList = `card card-compact px-4 bg-base-100 shadow-xl `;
@@ -41,7 +42,7 @@ const displayPhones = (phones) => {
   });
 };
 
-const handleClick = () => {
+const handleSearch = () => {
   const inputField = document.getElementById("search-field");
   const inputFieldValue = inputField.value;
   inputField.value = "";
@@ -57,5 +58,8 @@ const loader = (isLoading) => {
   else{
     loaderDiv.classList.add("hidden");
   }
+}
 
+const handleShowAll = () => {
+  handleSearch();
 }
