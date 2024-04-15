@@ -25,7 +25,7 @@ const displayPhones = (phones) => {
 
   phones.forEach((phone) => {
     const phoneCart = document.createElement("div");
-    phoneCart.classList = `card card-compact px-4 bg-base-100 shadow-xl `;
+    phoneCart.classList = `card card-compact bg-base-100 shadow-xl rounded-md pt-4`;
     phoneCart.innerHTML = `
         <figure><img src="${phone.image}" alt="Shoes" />
         </figure>
